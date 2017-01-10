@@ -3,7 +3,7 @@
   "name": "IISDeploy",
   "friendlyName": "IIS Deploy",
   "description": "Deploy zip package to IIS",
-  "helpMarkDown": "V 1.0.12",
+  "helpMarkDown": "V 1.0.13",
   "category": "Utility",
   "visibility": [
     "Build", 
@@ -13,7 +13,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 12
+    "Patch": 13
   },
   "demands": [
   ],
