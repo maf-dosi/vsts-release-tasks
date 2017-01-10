@@ -3,7 +3,7 @@
   "name": "IISDeploy",
   "friendlyName": "IIS Deploy",
   "description": "Deploy zip package to IIS",
-  "helpMarkDown": "[More Information](https://url.to/yourmarkdown)",
+  "helpMarkDown": "V 1.0.11",
   "category": "Utility",
   "visibility": [
     "Build", 
@@ -13,7 +13,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 10
+    "Patch": 11
   },
   "demands": [
   ],
@@ -43,7 +43,7 @@
       "type": "filePath",
       "label": "Path to SetParameters File",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "helpMarkDown": "Path of the SetParameters.xml file if different"
     }
   ],
