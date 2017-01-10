@@ -1,0 +1,66 @@
+{
+  "manifestVersion": 1,
+  "id": "mafreleasetasks",
+  "version": "0.1.0",
+  "name": "MAF Release Tasks",
+  "scopes": [ "vso.work", "vso.work_write" ],
+  "description": "MAF release Tasks",
+  "baseUri": "https://localhost",
+  "publisher": "maf",
+  "public": false,
+  "icons": {
+    "default": "img/logo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "Sample"
+  ],
+  "links": {
+    "home": {
+      "uri": "https://bit.ly"
+    },
+    "getstarted": {
+      "uri": "https://bit.ly"
+    },
+    "learn": {
+      "uri": "https://bit.ly"
+    },
+    "support": {
+      "uri": "https://bit.ly"
+    },
+    "repository": {
+      "uri": "https://bit.ly"
+    },
+    "issues": {
+      "uri": "https://bit.ly"
+    }
+  },
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "IISDeploy"
+    }
+  ],
+  "categories": [
+    "Build and release"
+  ],
+  "contributions": [
+    {
+      "id": "IISDeploy",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "IISDeploy"
+      }
+    }
+  ]
+}

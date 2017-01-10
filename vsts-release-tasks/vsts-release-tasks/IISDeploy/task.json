@@ -1,0 +1,58 @@
+﻿{
+  "id": "be2eeac7-a722-4244-a773-d0f27bfa0a80",
+  "name": "IISDeploy",
+  "friendlyName": "IIS Deploy",
+  "description": "Deploy zip package to IIS",
+  "helpMarkDown": "[More Information](https://url.to/yourmarkdown)",
+  "category": "Utility",
+  "visibility": [
+    "Build", 
+    "Release"
+  ],
+  "author": "",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "demands": [
+  ],
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+
+  ],
+  "inputs": [
+    {
+      "name": "Zippath",
+      "type": "filePath",
+      "label": "Path to Zip package File",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path of the zip file to deploy"
+    },
+    {
+      "name": "Servername",
+      "type": "string",
+      "label": "Server name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Server name"
+    },
+    {
+      "name": "Parameterspath",
+      "type": "filePath",
+      "label": "Path to SetParameters File",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path of the SetParameters.xml file if different"
+    }
+  ],
+  "instanceNameFormat": "IISDeploy",
+  "execution": {
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\iisdeploy.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
