@@ -46,6 +46,9 @@
   "files": [
     {
       "path": "IISDeploy"
+    },
+    {
+      "path": "IISWebAppDeploymentOnMachineGroup"
     }
   ],
   "categories": [
@@ -60,6 +63,16 @@
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "IISDeploy"
+      }
+    },
+     {
+      "id": "IISWebAppDeploymentOnMachineGroup",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "IISWebAppDeploymentOnMachineGroup"
       }
     }
   ]
