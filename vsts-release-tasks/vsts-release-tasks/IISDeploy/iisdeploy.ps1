@@ -46,7 +46,11 @@ try {
 				"-setParamFile:$paramfile")
 			
 			Write-Host "Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait"
-			Start-Process "$msdeploy" -ArgumentList "$arguments" -NoNewWindow -Wait
+			$Output = Start-Process "$msdeploy" -ArgumentList "$arguments" -NoNewWindow -Wait
+			If($Output.Exitcode -ne 0)
+			{
+				 Throw "Errorlevel $($Output.ExitCode)"
+			}
 		}
 
 		DeployWebsite -Package $Zippath -Server $Servername -paramfile $Parameterspath
