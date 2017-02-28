@@ -6,7 +6,7 @@ param(
 )
 
 Write-Host "Starting IISDeploy task"
-Trace-VstsEnteringInvocation $MyInvocation
+
 
 try {
 
@@ -55,7 +55,7 @@ try {
 	Write-Host “##vso[task.logissue type=error;] MsDeploy Error”
 
 } finally {
-	Trace-VstsLeavingInvocation $MyInvocation
+	
 }
 
 Write-Host "Ending IISDeploy task"
