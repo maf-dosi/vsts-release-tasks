@@ -42,19 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="gruntfile.js" />
-    <Content Include="IISDeploy\ps_modules\FindFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\InputFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\LegacyFindFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\lib.json" />
-    <Content Include="IISDeploy\ps_modules\LocalizationFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\LoggingCommandFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\LongPathFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\OutFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\ServerOMFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\ToolFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\TraceFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk.psd1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk.psm1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LegacyFindFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\lib.json" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LocalizationFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LongPathFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\OutFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\ServerOMFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\ToolFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
+    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
     <None Include="package.json" />
     <None Include="vss-extension.json" />
     <None Include="img\logo.png" />
@@ -70,7 +70,7 @@
     <Content Include="IISDeploy\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IISDeploy\ps_modules\Strings\" />
+    <Folder Include="IISDeploy\ps_modules\VstsTaskSdk\Strings\" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
