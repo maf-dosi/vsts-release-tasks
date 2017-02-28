@@ -49,10 +49,13 @@
   ],
   "instanceNameFormat": "IISDeploy",
   "execution": {
-    "PowerShell3": {
+     "PowerShell": {
       "target": "$(currentDirectory)\\iisdeploy.ps1",
       "argumentFormat": "",
-      "workingDirectory": "$(currentDirectory)"
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
     }
   }
 }

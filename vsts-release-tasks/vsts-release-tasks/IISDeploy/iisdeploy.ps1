@@ -1,4 +1,4 @@
-﻿[CmdletBinding(DefaultParameterSetName = 'None')]
+﻿
 param(
 	[string][Parameter(Mandatory=$true)] $Zippath, 
 	[string][Parameter(Mandatory=$true)] $Servername,
