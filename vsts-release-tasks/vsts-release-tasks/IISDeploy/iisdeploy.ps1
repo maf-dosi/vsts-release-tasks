@@ -45,6 +45,7 @@ try {
 				"-dest:auto,computerName='$PublishUrl'",
 				"-setParamFile:$paramfile")
 			
+			Write-Host "Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait"
 			Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait
 		}
 
