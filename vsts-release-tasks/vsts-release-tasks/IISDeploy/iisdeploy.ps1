@@ -48,8 +48,8 @@ try {
 			#Write-Host "Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait"
 			#Start-Process "$msdeploy" -ArgumentList "$arguments" -NoNewWindow -Wait
 
-Write-Host "Invoke-Expression '&"$msdeploy" -verb:sync "-source:package='$Package'" "-dest:auto,computerName='$PublishUrl'" -setParamFile:$paramfile'"
-			Invoke-Expression '&"$msdeploy" -verb:sync "-source:package='$Package'" "-dest:auto,computerName='$PublishUrl'" -setParamFile:$paramfile'
+Write-Host "Invoke-Expression '&"$msdeploy" -verb:sync "-source:package=$Package" "-dest:auto,computerName=$PublishUrl" -setParamFile:$paramfile'"
+			Invoke-Expression '&"$msdeploy" -verb:sync "-source:package=$Package" "-dest:auto,computerName=$PublishUrl" -setParamFile:$paramfile'
 			
 		}
 
