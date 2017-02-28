@@ -46,7 +46,7 @@ try {
 				"-setParamFile:$paramfile")
 			
 			Write-Host "Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait"
-			Start-Process $msdeploy -ArgumentList $arguments -NoNewWindow -Wait
+			Start-Process "$msdeploy" -ArgumentList "$arguments" -NoNewWindow -Wait
 		}
 
 		DeployWebsite -Package $Zippath -Server $Servername -paramfile $Parameterspath
