@@ -41,6 +41,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Invoke-WebTest\icon.png" />
     <None Include="gruntfile.js" />
     <Content Include="IISDeploy\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
     <Content Include="IISDeploy\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
@@ -55,6 +56,8 @@
     <Content Include="IISDeploy\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
     <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
     <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
+    <Content Include="Invoke-WebTest\Invoke-WebTest.ps1" />
+    <Content Include="Invoke-WebTest\task.json" />
     <None Include="package.json" />
     <None Include="vss-extension.json" />
     <None Include="img\logo.png" />

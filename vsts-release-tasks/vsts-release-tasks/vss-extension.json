@@ -46,20 +46,23 @@
   "files": [
     {
       "path": "IISDeploy"
+    },
+    {
+      "path": "Invoke-WebTest"
     }
   ],
   "categories": [
     "Build and release"
   ],
   "contributions": [
-    {
-      "id": "IISDeploy",
+     {
+      "id": "InvokeWebTest",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
-        "name": "IISDeploy"
+        "name": "Invoke-WebTest"
       }
     }
   ]

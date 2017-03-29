@@ -1,0 +1,102 @@
+{
+  "name": "InvokeWebTest",
+  "id": "8b5a5583-6ab1-4765-9c8a-2b5865bc5226",
+  "friendlyName": "Invoke web tests",
+  "description": "Invoke web tests",
+  "helpMarkDown": "v0.0.12 - This task runs webtests.",
+  "category": "Test",
+  "instanceNameFormat": "Invoke web tests",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "author": "MAF",
+  "version": {
+"Major": 0,
+"Minor": 0,
+"Patch": 12
+  },
+  "demands": [
+  ],
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+      "name": "executionOptions",
+      "displayName": "Execution Options",
+      "isExpanded": true
+    },
+    {
+      "name": "reportingOptions",
+      "displayName": "Reporting Options",
+      "isExpanded": false
+    }
+  ],
+
+  "inputs": [
+    {
+      "name": "webTestAssembly",
+      "type": "string",
+      "label": "WebTest Assembly",
+      "defaultValue": "**\\*test*.webtest",
+      "required": true,
+      "helpMarkDown": "WebTest binaries to run tests on.  Wildcards can be used.  For example, `**\\*test*.dll;-:**\\obj\\**` for all dlls with test in name while excluding files in any sub-directory named obj.",
+      "groupName": "executionOptions"
+    },
+    {
+      "name": "testSettings",
+      "type": "filePath",
+      "label": "Test Settings",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Test settings to run tests on.",
+      "groupName": "executionOptions"
+    },
+    {
+      "name": "testRunTitle",
+      "type": "string",
+      "label": "Test Run Title",
+      "defaultValue": "TIT_$(Build.buildnumber)",
+      "required": false,
+      "helpMarkDown": "Provide a name for the Test Run.",
+      "groupName": "reportingOptions"
+    },
+    {
+      "name": "platform",
+      "type": "string",
+      "label": "Platform",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Platform against which the tests should be reported. If you have defined a variable for platform in your build task, use that here.",
+      "groupName": "reportingOptions"
+    },
+    {
+      "name": "configuration",
+      "type": "string",
+      "label": "Configuration",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Configuration against which the tests should be reported. If you have defined a variable for configuration in your build task, use that here.",
+      "groupName": "reportingOptions"
+    },
+    {
+      "name": "publishRunAttachments",
+      "type": "boolean",
+      "label": "Upload Test Attachments",
+      "defaultValue": "true",
+      "required": false,
+      "helpMarkDown": "Opt in/out of publishing test run level attachments.",
+      "groupName": "reportingOptions"
+    }
+  ],
+
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\Invoke-WebTest.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}

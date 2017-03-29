@@ -50,6 +50,7 @@ try {
 
 Write-Host "Invoke-Expression '&"$msdeploy" -verb:sync "-source:package=$Package" "-dest:auto,computerName=$PublishUrl" -setParamFile:$paramfile'"
 			".\$msdeploy" -verb:sync -source:package="$Package" -dest:auto,computerName="$PublishUrl" -setParamFile:$paramfile
+
 			
 		}
 
