@@ -64,6 +64,16 @@
       "properties": {
         "name": "Invoke-WebTest"
       }
+    },
+     {
+      "id": "IISDeploy",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "IISDeploy"
+      }
     }
   ]
 }
