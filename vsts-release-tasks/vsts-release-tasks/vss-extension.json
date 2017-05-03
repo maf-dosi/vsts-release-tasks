@@ -49,6 +49,9 @@
     },
     {
       "path": "Invoke-WebTest"
+    },
+    {
+      "path": "DacpacDeploy"
     }
   ],
   "categories": [
@@ -73,6 +76,16 @@
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "IISDeploy"
+      }
+    },
+     {
+      "id": "DacpacDeploy",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "DacpacDeploy"
       }
     }
   ]
