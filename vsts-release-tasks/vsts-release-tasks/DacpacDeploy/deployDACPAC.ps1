@@ -57,8 +57,8 @@ try {
         throw ('Deployment failed: ''{0}'' Reason: ''{1}'' ''{2}''' -f $_.Exception.Message, $_.Exception.InnerException.Message, $_.Exception.InnerException.InnerException.Message)
     }
     Unregister-Event -source "msg" 
-} catch {
-    Write-Host “##vso[task.logissue type=error;] DacpacDeploy Error”
+} catch  [System.Exception] {
+    Write-Host "##vso[task.logissue type=error;] DacpacDeploy Error: $_.Message" 
 } finally {	
 }
 Write-Host "Ending DacpacDeploy task"
