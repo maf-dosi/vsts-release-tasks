@@ -53,7 +53,6 @@ try {
     try{
     $dacService.Deploy($dacPackage, $databaseName, $true, $deployOptions) 
     } catch [Microsoft.SqlServer.Dac.DacServicesException] {
-        Resolve-Error -Error $_
         throw ('Deployment failed: ''{0}'' Reason: ''{1}'' ''{2}''' -f $_.Exception.Message, $_.Exception.InnerException.Message, $_.Exception.InnerException.InnerException.Message)
     }
     Unregister-Event -source "msg" 
