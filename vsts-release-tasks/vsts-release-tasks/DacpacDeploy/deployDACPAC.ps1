@@ -11,6 +11,10 @@
 
 $user=[Security.Principal.WindowsIdentity]::GetCurrent()
 Write-Host "Deploying as " $user.Name
+Write-Host "Server: " $serverName
+Write-Host "Database: " $databaseName
+Write-Host "DACPAC file: " $dacpacFilePath
+Write-Host "Publish file: " $xmlPublishFilePath
 $connectionString="Data Source=$serverName;Integrated Security=True;"
 
 try {
