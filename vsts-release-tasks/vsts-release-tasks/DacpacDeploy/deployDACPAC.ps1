@@ -61,7 +61,8 @@ try {
     }
     Unregister-Event -source "msg" 
 } catch  [System.Exception] {
-    Write-Host "##vso[task.logissue type=error;] DacpacDeploy Error: $_.Message" 
+    Write-Host "##vso[task.logissue type=error;] DacpacDeploy Error: $_" 
+    exit 1
 } finally {	
 }
 Write-Host "Ending DacpacDeploy task"
