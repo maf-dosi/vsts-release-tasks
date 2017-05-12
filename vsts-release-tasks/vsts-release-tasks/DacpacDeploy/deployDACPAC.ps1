@@ -46,7 +46,7 @@ try {
 
 	$dacPackage = [Microsoft.SqlServer.Dac.DacPackage]::Load($dacpacFilePath)
 
-    if($xmlPublishFilePath){
+    if($xmlPublishFilePath -and $xmlPublishFilePath -ne $env:SYSTEM_DEFAULTWORKINGDIRECTORY){
         $dacProfile = [Microsoft.SqlServer.Dac.DacProfile]::Load($xmlPublishFilePath)
         $deployOptions=$dacProfile.DeployOptions
     } else {
