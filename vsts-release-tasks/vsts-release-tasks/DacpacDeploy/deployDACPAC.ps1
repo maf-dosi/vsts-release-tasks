@@ -62,7 +62,7 @@ try {
     Unregister-Event -source "msg" 
 } catch  [System.Exception] {
     Write-Host "##vso[task.logissue type=error;] DacpacDeploy Error: $_" 
-    exit 1
+    Write-Host "##vso[task.complete result=Failed]Failed"
 } finally {	
 }
 Write-Host "Ending DacpacDeploy task"
