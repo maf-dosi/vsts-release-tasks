@@ -3,8 +3,8 @@
   "name": "IISDeploy",
   "friendlyName": "IIS Deploy",
   "description": "Deploy zip package to IIS",
-  "helpMarkDown": "V 1.0.14",
-  "category": "Utility",
+  "helpMarkDown": "Deploy zip package to IIS - MAF",
+  "category": "Deploy",
   "visibility": [
     "Build", 
     "Release"
@@ -49,7 +49,7 @@
       "name": "DoNotDeleteAdditionalFiles",
       "type": "boolean",
       "label": "Do not delete additional files at destination",
-      "defaultValue": "true",
+      "defaultValue": "false",
       "required": false,
       "helpMarkDown": "Do not delete additional files at destination"
     }
