@@ -19,11 +19,10 @@
   ],
   "minimumAgentVersion": "1.83.0",
   "groups": [
-
   ],
   "inputs": [
     {
-      "name": "Zippath",
+      "name": "ZipPath",
       "type": "filePath",
       "label": "Path to Zip package File",
       "defaultValue": "",
@@ -31,7 +30,7 @@
       "helpMarkDown": "Path of the zip file to deploy"
     },
     {
-      "name": "Servername",
+      "name": "ServerName",
       "type": "string",
       "label": "Server name",
       "defaultValue": "",
@@ -39,12 +38,20 @@
       "helpMarkDown": "Server name"
     },
     {
-      "name": "Parameterspath",
+      "name": "ParametersPath",
       "type": "filePath",
       "label": "Path to SetParameters File",
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Path of the SetParameters.xml file if different"
+    },
+    {
+      "name": "DoNotDeleteAdditionalFiles",
+      "type": "boolean",
+      "label": "Do not delete additional files at destination",
+      "defaultValue": "true",
+      "required": false,
+      "helpMarkDown": "Do not delete additional files at destination"
     }
   ],
   "instanceNameFormat": "IISDeploy",
