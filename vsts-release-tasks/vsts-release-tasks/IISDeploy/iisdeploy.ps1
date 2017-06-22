@@ -70,7 +70,7 @@ try {
 	}
 	
 	if(-not($ParametersPath)){
-		$ParametersPath = [System.IO.Path]::ChangeExtension($ZipPath, ".xml")
+		$ParametersPath = [System.IO.Path]::ChangeExtension($ZipPath, ".SetParameters.xml")
 		Write-Verbose "Compute ParametersPath: $ParametersPath"
 	}
 
