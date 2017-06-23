@@ -20,7 +20,7 @@ try {
         throw "The package should be a .zip file"
     }
 	
-    if (-not($ParametersPath)) {
+    if (-not($ParametersPath) -or $xmlPublishFilePath -eq $env:SYSTEM_DEFAULTWORKINGDIRECTORY) {
         $ParametersPath = [System.IO.Path]::ChangeExtension($ZipPath, ".SetParameters.xml")
         Write-Verbose "Compute ParametersPath: $ParametersPath"
     }
