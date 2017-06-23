@@ -17,7 +17,7 @@
   },
   "demands": [
   ],
-  "minimumAgentVersion": "1.83.0",
+  "minimumAgentVersion": "1.95.1",
   "groups": [
   ],
   "inputs": [
@@ -56,7 +56,7 @@
   ],
   "instanceNameFormat": "IISDeploy",
   "execution": {
-     "PowerShell": {
+     "PowerShell3": {
       "target": "$(currentDirectory)\\iisdeploy.ps1",
       "argumentFormat": "",
       "workingDirectory": "$(currentDirectory)",
