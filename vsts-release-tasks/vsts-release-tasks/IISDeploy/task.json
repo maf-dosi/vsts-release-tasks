@@ -52,6 +52,14 @@
       "defaultValue": "false",
       "required": false,
       "helpMarkDown": "Do not delete additional files at destination"
+    },
+    {
+      "name": "AdditionalParameters",
+      "type": "string",
+      "label": "Additional parameters to pass to MSDeploy",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "DoAdditional parameters to pass to MSDeploy"
     }
   ],
   "instanceNameFormat": "IISDeploy",

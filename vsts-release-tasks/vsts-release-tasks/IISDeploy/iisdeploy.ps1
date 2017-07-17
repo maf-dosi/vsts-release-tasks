@@ -26,6 +26,7 @@ try {
     }
 
     . $PSScriptRoot\Deploy-Website.ps1
+    . $PSScriptRoot\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1
     $process = Deploy-Website -Package $ZipPath -Server $ServerName -ParamFile $ParametersPath -addDoNotDeleteRule $DoNotDeleteAdditionalFiles -additionalParameters $AdditionalParameters
     if ($process.ExitCode -ne 0) {
         throw "Errors when running MSDeploy (exit code = $($process.ExitCode))"
@@ -33,6 +34,7 @@ try {
 }
 catch {
     Write-Host "##vso[task.logissue type=error;] MsDeploy Error: $_"
+    Write-SetResult -Result Failed -DoNotThrow
 }
 finally {
     Write-Host "Ending IISDeploy task"
