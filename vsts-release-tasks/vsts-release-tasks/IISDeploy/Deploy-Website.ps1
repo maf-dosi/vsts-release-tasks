@@ -38,7 +38,7 @@ function Deploy-Website {
             "-verb:sync",
             "-source:package='$Package'",
             "-dest:auto,computerName='$PublishUrl'",
-            "-setParamFile:'$ParamFile'")
+            "-setParamFile:""$ParamFile""")
 	
         if ($addDoNotDeleteRule) {
             $argumentArray += "-enableRule:DoNotDeleteRule"
