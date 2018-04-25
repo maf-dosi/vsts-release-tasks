@@ -1,88 +1,88 @@
 {
-  "manifestVersion": 1,
-  "id": "mafreleasetasks",
-  "version": "0.2.0",
-  "name": "MAF Release Tasks",
-  "publisher": "maf",
-  "targets": [
-    {
-      "id": "Microsoft.VisualStudio.Services"
-    }
-  ],
-  "contributions": [
-     {
-      "id": "InvokeWebTest",
-      "type": "ms.vss-distributed-task.task",
-      "description": "",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "Invoke-WebTest"
-      }
+    "manifestVersion": 1,
+    "id": "mafreleasetasks",
+    "version": "0.2.0",
+    "name": "MAF Release Tasks",
+    "publisher": "maf",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "InvokeWebTest",
+            "type": "ms.vss-distributed-task.task",
+            "description": "",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "Invoke-WebTest"
+            }
+        },
+        {
+            "id": "IISDeploy",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "type": "ms.vss-distributed-task.task",
+            "properties": {
+                "name": "IISDeploy"
+            }
+        },
+        {
+            "id": "DacpacDeploy",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "type": "ms.vss-distributed-task.task",
+            "properties": {
+                "name": "DacpacDeploy"
+            }
+        }
+    ],
+    "description": "MAF release Tasks",
+    "icons": {
+        "default": "img/logo.png"
     },
-     {
-      "id": "IISDeploy",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "IISDeploy"
-      }
-    },
-     {
-      "id": "DacpacDeploy",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "DacpacDeploy"
-      }
-    }
-  ],
-  "description": "MAF release Tasks",
-  "icons": {
-    "default": "img/logo.png"
-  },
-  "categories": [
-    "Build and release"
-  ],
-  "tags": [
-    "release",
-    "iis",
-    "dacpac"
-  ],
-  "links": {
-    "home": {
-        "uri": "https://github.com/maf-dosi/vsts-release-tasks"
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "release",
+        "iis",
+        "dacpac"
+    ],
+    "links": {
+        "home": {
+            "uri": "https://github.com/maf-dosi/vsts-release-tasks"
+        },
+        "repository": {
+            "uri": "https://github.com/maf-dosi/vsts-release-tasks"
+        },
+        "issues": {
+            "uri": "https://github.com/maf-dosi/vsts-release-tasks/issues"
+        }
     },
     "repository": {
+        "type": "git",
         "uri": "https://github.com/maf-dosi/vsts-release-tasks"
     },
-    "issues": {
-        "uri": "https://github.com/maf-dosi/vsts-release-tasks/issues"
-    }
-  },
-  "repository": {
-      "type": "git",
-      "uri": "https://github.com/maf-dosi/vsts-release-tasks"
-  },
-  "branding": {
-    "color": "rgb(220, 235, 252)",
-    "theme": "light"
-  },
-  "public": false,
-  "files": [
-    {
-      "path": "IISDeploy"
+    "branding": {
+        "color": "rgb(220, 235, 252)",
+        "theme": "light"
     },
-    {
-      "path": "Invoke-WebTest"
-    },
-    {
-      "path": "DacpacDeploy"
-    }
-  ]
+    "public": false,
+    "files": [
+        {
+            "path": "IISDeploy"
+        },
+        {
+            "path": "Invoke-WebTest"
+        },
+        {
+            "path": "DacpacDeploy"
+        }
+    ]
 }
