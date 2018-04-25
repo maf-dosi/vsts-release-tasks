@@ -3,18 +3,25 @@
   "name": "DeployDACPAC",
   "friendlyName": "Deploy a DACPAC file",
   "description": "Allows you to deploy DACPAC packages",
-  "helpMarkDown": "V 1.0.14",
-  "category": "Utility",
+  "helpMarkDown": "Deploy a DACPAC file - MAF",
+  "category": "Deploy",
   "author": "MAF-DOSI",
   "visibility": [
     "Release"
   ],
   "version": {
-    "Major": 1,
+    "Major": 0,
     "Minor": 0,
-    "Patch": 0
+    "Patch": 1
   },
-  "minimumAgentVersion": "1.83.0",
+  "minimumAgentVersion": "1.95.1",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced deployment options",
+      "isExpanded": false
+    }
+  ],
   "inputs": [
     {
       "name": "dacpacFilePath",
@@ -43,11 +50,28 @@
       "label": "XML Publish file path",
       "required": false,
       "helpMarkDown": "Path of the publish file"
+    },
+    {
+      "name": "blockOnDropDataAsString",
+      "type": "picklist",
+      "groupName": "advanced",
+      "label": "Block if data loss might occur",
+      "required": false,
+      "defaultValue": "As configured",
+      "helpMarkDown": "Block incremental deployment if data loss might occur",
+      "options": {
+        "": "As configured",
+        "true": "Yes",
+        "false": "No"
+      },
+      "properties": {
+        "EditableOptions": "True"
+      }
     }
   ],
   "instanceNameFormat": "Deploy a DACPAC on $(serverName):$(databaseName)",
   "execution": {
-    "PowerShell": {
+    "PowerShell3": {
       "target": "deployDACPAC.ps1",
       "workingDirectory": "$(currentDirectory)",
       "platforms": [
