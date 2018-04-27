@@ -12,10 +12,11 @@
   ],
   "author": "MAF",
   "version": {
-"Major": 1,
-"Minor": 0,
-"Patch": 12
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0
   },
+  "preview": true,
   "demands": [
   ],
   "minimumAgentVersion": "1.83.0",
