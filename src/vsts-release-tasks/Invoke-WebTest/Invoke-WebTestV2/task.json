@@ -2,8 +2,8 @@
   "name": "InvokeWebTest",
   "id": "8b5a5583-6ab1-4765-9c8a-2b5865bc5226",
   "friendlyName": "Invoke web tests",
-  "description": "Invoke web tests",
-  "helpMarkDown": "v0.0.12 - This task runs webtests.",
+  "description": "Invoke web tests (V2)",
+  "helpMarkDown": "This task runs webtests.",
   "category": "Test",
   "instanceNameFormat": "Invoke web tests",
   "visibility": [
@@ -12,7 +12,7 @@
   ],
   "author": "MAF",
   "version": {
-"Major": 0,
+"Major": 1,
 "Minor": 0,
 "Patch": 12
   },
