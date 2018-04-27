@@ -5,7 +5,7 @@ param(
 	[string]$platform,
 	[string]$configuration,
 	[string]$publishRunAttachments
-) 
+)
 
 Write-Verbose 'Start'
 Write-Verbose "webTestAssembly = $webTestAssembly"
@@ -16,12 +16,12 @@ import-module "Microsoft.TeamFoundation.DistributedTask.Task.Common"
 import-module "Microsoft.TeamFoundation.DistributedTask.Task.TestResults"
 
 Function CmdletHasMember($memberName) {
-	$publishParameters = (gcm Publish-TestResults).Parameters.Keys.Contains($memberName) 
+	$publishParameters = (gcm Publish-TestResults).Parameters.Keys.Contains($memberName)
 	return $publishParameters
 }
 
 if (!$webTestAssembly)
-{        
+{
 	throw (Get-LocalizedString -Key "No test assembly specified. Provide a test assembly parameter and try again.")
 }
 
@@ -34,7 +34,7 @@ if(!$sourcesDirectory)
 
 if(!$sourcesDirectory)
 {
-	# If there is still no sources directory, error out immediately.        
+	# If there is still no sources directory, error out immediately.
 	throw (Get-LocalizedString -Key "No source directory found.")
 }
 
@@ -43,7 +43,7 @@ $webTestAssemblyFiles = @()
 if ($webTestAssembly.Contains("*") -Or $webTestAssembly.Contains("?"))
 {
 	Write-Verbose "Pattern found in solution parameter. Calling Find-Files."
-	Write-Verbose "Calling Find-Files with pattern: $webTestAssembly"    
+	Write-Verbose "Calling Find-Files with pattern: $webTestAssembly"
 	$webTestAssemblyFiles = Find-Files -SearchPattern $webTestAssembly -RootFolder $sourcesDirectory
 	Write-Verbose "Found files: $webTestAssemblyFiles"
 }
@@ -91,11 +91,11 @@ if(Test-Path $resultFile)
 }
 #$include = "*.webtest"
 #$web_tests = get-ChildItem -Path $paths -Recurse -Include $include
-foreach ($item in $webTestAssemblyFiles) 
-{    
+foreach ($item in $webTestAssemblyFiles)
+{
 	$args += "/TestContainer:$item "
 }
-	
+
 & $tool $args /resultsfile:$resultFile /testsettings:$testSettings
 
 $last = $LASTEXITCODE
@@ -129,7 +129,7 @@ if($resultFile)
 			Write-Warning (Get-LocalizedString -Key "Update the agent to try out the '{0}' feature." -ArgumentList "custom run title")
 		}
 
-		if($publishRunLevelAttachmentsExists)		
+		if($publishRunLevelAttachmentsExists)
 		{
 			Publish-TestResults -Context $distributedTaskContext -TestResultsFiles $resultFile -TestRunner "VSTest" -Platform $platform -Configuration $configuration -PublishRunLevelAttachments $publishResultsOption
 		}
@@ -140,7 +140,7 @@ if($resultFile)
 				Write-Warning (Get-LocalizedString -Key "Update the agent to try out the '{0}' feature." -ArgumentList "opt in/out of publishing test run attachments")
 			}
 			Publish-TestResults -Context $distributedTaskContext -TestResultsFiles $resultFile -TestRunner "VSTest" -Platform $platform -Configuration $configuration
-		}		
+		}
 	}
 }
 else
@@ -148,10 +148,10 @@ else
 	Write-Host "##vso[task.logissue type=warning;code=002003;]"
 	Write-Warning (Get-LocalizedString -Key "No results found to publish.")
 }
-	
+
 if($last -ne 0)
 {
 	throw "Error while running tests"
-}	
-	
+}
+
 Write-Verbose "End"
