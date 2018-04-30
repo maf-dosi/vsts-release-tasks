@@ -42,8 +42,24 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DacpacDeploy\icon.png" />
     <Content Include="IISDeploy\IISDeployV0\icon.png" />
     <Content Include="Invoke-WebTest\icon.png" />
+    <Content Include="DacpacDeploy\deployDACPAC.ps1" />
+    <Content Include="DacpacDeploy\task.json" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\LegacyFindFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\lib.json" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\LocalizationFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\LongPathFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\OutFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\ServerOMFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\ToolFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
+    <Content Include="DacpacDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
     <None Include="gruntfile.js" />
     <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
     <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
@@ -91,6 +107,7 @@
     <Content Include="IISDeploy\IISDeployV1\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DacpacDeploy\ps_modules\VstsTaskSdk\Strings\" />
     <Folder Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\Strings\" />
     <Folder Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\Strings\" />
   </ItemGroup>
