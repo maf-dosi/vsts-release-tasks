@@ -1,4 +1,5 @@
-﻿param(
+﻿[CmdletBinding()]
+param(
     [string] [Parameter(Mandatory = $true)]
     $serverName,    
     [string] [Parameter(Mandatory = $true)]
@@ -6,15 +7,18 @@
     [string] [Parameter(Mandatory = $true)]
     $dacpacFilePath,
     [string] [Parameter(Mandatory = $false)]
-    $xmlPublishFilePath
+    $xmlPublishFilePath,
+    [string] [Parameter(Mandatory = $false)]
+    $blockOnDropDataAsString
 )
 
 $user=[Security.Principal.WindowsIdentity]::GetCurrent()
-Write-Host "Deploying as " $user.Name
-Write-Host "Server: " $serverName
-Write-Host "Database: " $databaseName
-Write-Host "DACPAC file: " $dacpacFilePath
-Write-Host "Publish file: " $xmlPublishFilePath
+Write-Debug "Deploying as " $user.Name
+Write-Debug "Server: " $serverName
+Write-Debug "Database: " $databaseName
+Write-Debug "DACPAC file: " $dacpacFilePath
+Write-Debug "Publish file: " $xmlPublishFilePath
+Write-Debug "Block on data loss : " $blockOnDropDataAsString
 $connectionString="Data Source=$serverName;Integrated Security=True;"
 
 try {
@@ -38,7 +42,7 @@ try {
 		Write-Error "DACPAC runtime not found, make sure the task executes on a machine with SQL Server tools installed"
 		exit
 	}
-    Write-Host "Path of Microsoft.SqlServer.Dac.dll: " $dacDllPath
+    Write-Debug "Path of Microsoft.SqlServer.Dac.dll: " $dacDllPath
 
 	Add-Type -Path "$dacDllPath\\Microsoft.SqlServer.Dac.dll"
 	$dacService = New-Object Microsoft.SqlServer.Dac.DacServices $connectionString
@@ -51,6 +55,13 @@ try {
         $deployOptions=$dacProfile.DeployOptions
     } else {
         $deployOptions = $null
+    }
+
+    if($blockOnDropDataAsString){
+        if($deployOptions -eq $null){
+            $deployOptions = New-Object Microsoft.SqlServer.Dac.DacDeployOptions
+        }        
+        $deployOptions.BlockOnPossibleDataLoss = $blockOnDropDataAsString -ne 'false'
     }
 
     Write-Host "Deploying database $databaseName to server $serverName"
