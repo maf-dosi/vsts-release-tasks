@@ -19,6 +19,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,39 +42,57 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IISDeploy\IISDeployV0\icon.png" />
     <Content Include="Invoke-WebTest\icon.png" />
     <None Include="gruntfile.js" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LegacyFindFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\lib.json" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LocalizationFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\LongPathFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\OutFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\ServerOMFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\ToolFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
-    <Content Include="IISDeploy\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\LegacyFindFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\lib.json" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\LocalizationFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\LongPathFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\OutFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\ServerOMFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\ToolFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
+    <Content Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
     <Content Include="Invoke-WebTest\Invoke-WebTest.ps1" />
     <Content Include="Invoke-WebTest\task.json" />
+    <Content Include="IISDeploy\IISDeployV1\Deploy-Website.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\FindFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\InputFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\LegacyFindFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\lib.json" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\LocalizationFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\LongPathFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\OutFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\ServerOMFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\ToolFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\TraceFunctions.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1" />
+    <Content Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\VstsTaskSdk.psm1" />
+    <Content Include="IISDeploy\IISDeployV0\Deploy-Website.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\iisdeploy.ps1" />
+    <Content Include="IISDeploy\IISDeployV0\task.json" />
     <None Include="package.json" />
     <None Include="vss-extension.json" />
     <None Include="img\logo.png" />
-    <None Include="settings.tfx.json" />
     <None Include=".gitignore" />
     <None Include=".tfignore" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".vscode\tasks.json" />
-    <Content Include="IISDeploy\iisdeploy.ps1" />
-    <Content Include="IISDeploy\task.json" />
-    <Content Include="IISDeploy\icon.png" />
+    <Content Include="IISDeploy\IISDeployV1\iisdeploy.ps1" />
+    <Content Include="IISDeploy\IISDeployV1\task.json" />
+    <Content Include="IISDeploy\IISDeployV1\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IISDeploy\ps_modules\VstsTaskSdk\Strings\" />
+    <Folder Include="IISDeploy\IISDeployV0\ps_modules\VstsTaskSdk\Strings\" />
+    <Folder Include="IISDeploy\IISDeployV1\ps_modules\VstsTaskSdk\Strings\" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
