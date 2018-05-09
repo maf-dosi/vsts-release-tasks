@@ -20,6 +20,11 @@
     ],
     "minimumAgentVersion": "1.95.1",
     "groups": [
+        {
+            "name": "authentication",
+            "displayName": "Authentication options",
+            "isExpanded": false
+        }
     ],
     "inputs": [
         {
@@ -31,7 +36,7 @@
             "helpMarkDown": "Path of the zip file to deploy"
         },
         {
-            "name": "ServerName",
+            "name": "ServerNames",
             "type": "string",
             "label": "Server names",
             "defaultValue": "",
@@ -60,7 +65,25 @@
             "label": "Additional parameters to pass to MSDeploy",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "DoAdditional parameters to pass to MSDeploy"
+            "helpMarkDown": "Additional parameters to pass to MSDeploy"
+        },
+        {
+            "name": "AdminUserName",
+            "type": "string",
+            "label": "Admin login",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Admin login. Leave empty to use the agent's identity to deploy.",
+            "groupName": "authentication"
+        },
+        {
+            "name": "AdminPassword",
+            "type": "string",
+            "label": "Admin password",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Admin password. Leave empty to use the agent's identity to deploy.",
+            "groupName": "authentication"
         }
     ],
     "instanceNameFormat": "IISDeploy",

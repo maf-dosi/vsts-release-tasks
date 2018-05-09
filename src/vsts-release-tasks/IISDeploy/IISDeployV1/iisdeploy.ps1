@@ -1,35 +1,22 @@
 ﻿[CmdletBinding()]
 param()
 Trace-VstsEnteringInvocation $MyInvocation
+. $PSScriptRoot\Deploy-Website.ps1
+. $PSScriptRoot\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1
 try {
     [string]$ZipPath = Get-VstsInput -Name ZipPath -Require
     [string]$ServerNames = Get-VstsInput -Name ServerNames -Require
-    [bool]$DoNotDeleteAdditionalFiles = Get-VstsInput -Name DoNotDeleteAdditionalFiles -AsBool
     [string]$ParametersPath = Get-VstsInput -Name ParametersPath
-    [string]$AdditionalParameters = Get-VstsInput -Name AdditionalParameters
 
-    Write-Host "Starting IISDeploy task"
-    Write-Verbose "Task parameters:"
-    Write-Verbose "ZipPath: $ZipPath"
-    Write-Verbose "ServerNames: $ServerNames"
-    Write-Verbose "DoNotDeleteAdditionalFiles: $DoNotDeleteAdditionalFiles"
-    Write-Verbose "ParametersPath: $ParametersPath"
-    Write-Verbose "AdditionalParameters: $AdditionalParameters"
+    Write-Host "Starting IISDeploy task to ""$ServerNames"""
 
     if ($ZipPath -notmatch '\.zip') {
         throw "The package should be a .zip file"
     }
-	
-    if (-not($ParametersPath) -or $ParametersPath -eq $env:SYSTEM_DEFAULTWORKINGDIRECTORY) {
-        $ParametersPath = [System.IO.Path]::ChangeExtension($ZipPath, ".SetParameters.xml")
-        Write-Verbose "Compute ParametersPath: $ParametersPath"
-    }
-
-    . $PSScriptRoot\Deploy-Website.ps1
-    . $PSScriptRoot\ps_modules\VstsTaskSdk\LoggingCommandFunctions.ps1
 
     foreach($serverName in $ServerNames.Split(';', [System.StringSplitOptions]::RemoveEmptyEntries)) {
-        $process = Deploy-Website -Package $ZipPath -Server $ServerName -ParamFile $ParametersPath -addDoNotDeleteRule $DoNotDeleteAdditionalFiles -additionalParameters $AdditionalParameters
+
+        $process = Deploy-Website -Package $ZipPath -Server $ServerName -ParametersPath $ParametersPath
         if ($process.ExitCode -ne 0) {
             throw "Errors when running MSDeploy (exit code = $($process.ExitCode),server = $server)"
         }
