@@ -1,0 +1,73 @@
+{
+  "id": "2B334D7A-DEDA-4F96-9E77-90D9503CCD13",
+  "name": "DeployDACPAC",
+  "friendlyName": "Deploy a DACPAC file",
+  "description": "Allows you to deploy DACPAC packages with RefMaf schema filtered",
+  "helpMarkDown": "[More Information](https://github.com/maf-dosi/vsts-release-tasks/tree/dev/src/vsts-release-tasks/DacpacDeploy)",
+  "category": "Deploy",
+  "author": "MAF-DOSI",
+  "visibility": [
+    "Release"
+  ],
+    "version": {
+        "Major": 1,
+        "Minor": 0,
+        "Patch": 0
+    },
+  "preview": true,
+  "minimumAgentVersion": "1.95.1",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced deployment options",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "dacpacFilePath",
+      "type": "filePath",
+      "label": "DACPAC file path",
+      "helpMarkDown": "Path of the DACPAC file to deploy",
+      "required": true
+    },
+    {
+      "name": "serverName",
+      "type": "string",
+      "label": "Server Name",
+      "required": true,
+      "helpMarkDown": "Name of the targert SQL Server instance"
+    },
+    {
+      "name": "databaseName",
+      "type": "string",
+      "label": "Database Name",
+      "required": true,
+      "helpMarkDown": "Name of the target database"
+    },
+    {
+      "name": "xmlPublishFilePath",
+      "type": "filePath",
+      "label": "XML Publish file path",
+      "required": false,
+      "helpMarkDown": "Path of the publish profile file"
+    },
+    {
+      "name": "schemaToExclude",
+      "type": "string",
+      "label": "Schema to exclude",
+      "required": false,
+      "helpMarkDown": "The steps of the matching schema will be removed from the final script"
+    }
+  ],
+  "instanceNameFormat": "Deploy a DACPAC on $(serverName):$(databaseName)",
+  "execution": {
+    "PowerShell3": {
+      "target": "deployDACPAC.ps1",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}
