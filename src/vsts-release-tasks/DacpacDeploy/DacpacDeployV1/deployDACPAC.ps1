@@ -28,7 +28,7 @@ try {
 
     $args = @("/Action:Publish", 
             "/SourceFile:$dacpacFilePath",
-            "/TargetConnectionString:Data Source=$SqlServer;Integrated Security=true;Initial Catalog=$databaseName")
+            "/TargetConnectionString:Data Source=$serverName;Integrated Security=true;Initial Catalog=$databaseName")
 
     if($xmlPublishFilePath -ne $null) {
         $args += "/Profile:$xmlPublishFilePath"
