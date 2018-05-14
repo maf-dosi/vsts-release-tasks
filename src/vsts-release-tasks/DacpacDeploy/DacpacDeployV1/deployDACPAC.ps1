@@ -27,7 +27,7 @@ try {
     $sqlPackagePath = [System.IO.Path]::Combine($sqlPackageDir, "sqlpackage.exe")
 
     $args = @("/Action:Publish", 
-            "/SourceFile:$FileName",
+            "/SourceFile:$dacpacFilePath",
             "/TargetConnectionString:Data Source=$SqlServer;Integrated Security=true;Initial Catalog=$databaseName")
 
     if($xmlPublishFilePath -ne $null) {
