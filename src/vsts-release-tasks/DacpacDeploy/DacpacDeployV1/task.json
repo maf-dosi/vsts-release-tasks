@@ -2,7 +2,7 @@
   "id": "2B334D7A-DEDA-4F96-9E77-90D9503CCD13",
   "name": "DeployDACPAC",
   "friendlyName": "Deploy a DACPAC file",
-  "description": "Allows you to deploy DACPAC packages with RefMaf schema filtered",
+  "description": "Allows you to deploy DACPAC package with schema filtered",
   "helpMarkDown": "[More Information](https://github.com/maf-dosi/vsts-release-tasks/tree/dev/src/vsts-release-tasks/DacpacDeploy)",
   "category": "Deploy",
   "author": "MAF-DOSI",
