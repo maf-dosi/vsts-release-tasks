@@ -2,8 +2,8 @@
   "id": "2B334D7A-DEDA-4F96-9E77-90D9503CCD13",
   "name": "DeployDACPAC",
   "friendlyName": "Deploy a DACPAC file",
-  "description": "Allows you to deploy DACPAC packages",
-  "helpMarkDown": "Deploy a DACPAC file - MAF",
+  "description": "Allows you to deploy DACPAC package with schema filtered",
+  "helpMarkDown": "[More Information](https://github.com/maf-dosi/vsts-release-tasks/tree/dev/src/vsts-release-tasks/DacpacDeploy)",
   "category": "Deploy",
   "author": "MAF-DOSI",
   "visibility": [
@@ -12,7 +12,7 @@
     "version": {
         "Major": 1,
         "Minor": 0,
-        "Patch": 1
+        "Patch": 0
     },
   "preview": true,
   "minimumAgentVersion": "1.95.1",
@@ -50,24 +50,14 @@
       "type": "filePath",
       "label": "XML Publish file path",
       "required": false,
-      "helpMarkDown": "Path of the publish file"
+      "helpMarkDown": "Path of the publish profile file"
     },
     {
-      "name": "blockOnDropDataAsString",
-      "type": "picklist",
-      "groupName": "advanced",
-      "label": "Block if data loss might occur",
+      "name": "schemaToExclude",
+      "type": "string",
+      "label": "Schema to exclude",
       "required": false,
-      "defaultValue": "As configured",
-      "helpMarkDown": "Block incremental deployment if data loss might occur",
-      "options": {
-        "": "As configured",
-        "true": "Yes",
-        "false": "No"
-      },
-      "properties": {
-        "EditableOptions": "True"
-      }
+      "helpMarkDown": "The steps of the matching schema will be removed from the final script"
     }
   ],
   "instanceNameFormat": "Deploy a DACPAC on $(serverName):$(databaseName)",
