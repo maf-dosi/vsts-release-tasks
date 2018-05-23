@@ -58,6 +58,23 @@
       "label": "Schema to exclude",
       "required": false,
       "helpMarkDown": "The steps of the matching schema will be removed from the final script"
+    },
+    {
+      "name": "blockOnDropDataAsString",
+      "type": "picklist",
+      "groupName": "advanced",
+      "label": "Block if data loss might occur",
+      "required": false,
+      "defaultValue": "As configured",
+      "helpMarkDown": "Block incremental deployment if data loss might occur",
+      "options": {
+        "": "As configured",
+        "true": "Yes",
+        "false": "No"
+      },
+      "properties": {
+        "EditableOptions": "True"
+      }
     }
   ],
   "instanceNameFormat": "Deploy a DACPAC on $(serverName):$(databaseName)",

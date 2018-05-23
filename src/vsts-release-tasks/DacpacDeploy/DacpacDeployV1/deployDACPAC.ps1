@@ -7,6 +7,7 @@ try {
     [string]$dacpacFilePath = Get-VstsInput -Name dacpacFilePath -Require
     [string]$xmlPublishFilePath = Get-VstsInput -Name xmlPublishFilePath
     [string]$schemaToExclude = Get-VstsInput -Name schemaToExclude
+    [string]$blockOnDropDataAsString = Get-VstsInput -Name blockOnDropDataAsString
 
     $user=[Security.Principal.WindowsIdentity]::GetCurrent()
     Write-Debug "Deploying as  $user.Name"
@@ -19,7 +20,8 @@ try {
     if($schemaToExclude -ne $null) {
         Write-Debug "Schema to exclude: $schemaToExclude"
     }
-
+    Write-Debug "Block on data loss : $blockOnDropDataAsString"
+ 
     Write-Host "Deploying database $databaseName to server $serverName"
     
     $currentDir = (Get-Item -Path ".\" -Verbose).FullName
@@ -39,6 +41,11 @@ try {
         $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
     }   
     
+    if($blockOnDropDataAsString -ne $null){
+        $blockOnDropData = $blockOnDropDataAsString -ne 'false'
+        $args += "/p:BlockOnPossibleDataLoss=$blockOnDropData"
+    }
+
     &$sqlPackagePath $args 2>&1
 
 } catch  [System.Exception] {
