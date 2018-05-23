@@ -2,7 +2,7 @@
   "id": "2B334D7A-DEDA-4F96-9E77-90D9503CCD13",
   "name": "DeployDACPAC",
   "friendlyName": "Deploy a DACPAC file",
-  "description": "Allows you to deploy DACPAC package with schema filtered",
+  "description": "Allows you to deploy DACPAC package with schema filtered (tested with SQL*Server 2016)",
   "helpMarkDown": "[More Information](https://github.com/maf-dosi/vsts-release-tasks/tree/dev/src/vsts-release-tasks/DacpacDeploy)",
   "category": "Deploy",
   "author": "MAF-DOSI",
@@ -30,20 +30,6 @@
       "label": "DACPAC file path",
       "helpMarkDown": "Path of the DACPAC file to deploy",
       "required": true
-    },
-    {
-      "name": "serverName",
-      "type": "string",
-      "label": "Server Name",
-      "required": true,
-      "helpMarkDown": "Name of the targert SQL Server instance"
-    },
-    {
-      "name": "databaseName",
-      "type": "string",
-      "label": "Database Name",
-      "required": true,
-      "helpMarkDown": "Name of the target database"
     },
     {
       "name": "xmlPublishFilePath",

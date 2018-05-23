@@ -2,8 +2,6 @@
 param()
 Trace-VstsEnteringInvocation $MyInvocation
 try {
-    [string]$serverName = Get-VstsInput -Name serverName -Require
-    [string]$databaseName = Get-VstsInput -Name databaseName -Require
     [string]$dacpacFilePath = Get-VstsInput -Name dacpacFilePath -Require
     [string]$xmlPublishFilePath = Get-VstsInput -Name xmlPublishFilePath
     [string]$schemaToExclude = Get-VstsInput -Name schemaToExclude
@@ -11,36 +9,33 @@ try {
 
     $user=[Security.Principal.WindowsIdentity]::GetCurrent()
     Write-Debug "Deploying as  $user.Name"
-    Write-Debug "Server: $serverName"
-    Write-Debug "Database: $databaseName"
+
     Write-Debug "DACPAC file: $dacpacFilePath"
-    if($xmlPublishFilePath -ne $null) {
-        Write-Debug "Publish profile file: $xmlPublishFilePath"
+    if($xmlPublishFilePath -eq $null) {
+        $xmlPublishFilePath =  [System.IO.Path]::GetFileNameWithoutExtension($dacpacFilePath) + ".publish.xml"
     }
+    Write-Debug "Publish profile file: $xmlPublishFilePath"
+    Write-Debug "Reading connection information from the publish profile"
+    [xml]$publishProfile = Get-Content -Path $xmlPublishFilePath
+    Write-Debug "Target connection string: $publishProfile.Project.TargetConnectionString"
+    Write-Debug "Database name: $publishProfile.Project.TargetDatabaseName"
     if($schemaToExclude -ne $null) {
         Write-Debug "Schema to exclude: $schemaToExclude"
     }
     Write-Debug "Block on data loss : $blockOnDropDataAsString"
- 
-    Write-Host "Deploying database $databaseName to server $serverName"
-    
+
     $currentDir = (Get-Item -Path ".\" -Verbose).FullName
     $sqlPackageDir = [System.IO.Path]::Combine($currentDir, "bin")
     $sqlPackagePath = [System.IO.Path]::Combine($sqlPackageDir, "sqlpackage.exe")
 
     $args = @("/Action:Publish", 
             "/SourceFile:$dacpacFilePath",
-            "/TargetConnectionString:Data Source=$serverName;Integrated Security=true;Initial Catalog=$databaseName")
-
-    if($xmlPublishFilePath -ne $null) {
-        $args += "/Profile:$xmlPublishFilePath"
-    }      
+            "/Profile:$xmlPublishFilePath")
           
     if($schemaToExclude -ne $null) {
         $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
         $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
     }   
-    
     if($blockOnDropDataAsString -ne $null){
         $blockOnDropData = $blockOnDropDataAsString -ne 'false'
         $args += "/p:BlockOnPossibleDataLoss=$blockOnDropData"
