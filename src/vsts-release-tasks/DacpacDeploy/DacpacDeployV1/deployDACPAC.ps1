@@ -17,8 +17,8 @@ try {
     Write-Debug "Publish profile file: $xmlPublishFilePath"
     Write-Debug "Reading connection information from the publish profile"
     [xml]$publishProfile = Get-Content -Path $xmlPublishFilePath
-    Write-Debug "Target connection string: $publishProfile.Project.TargetConnectionString"
-    Write-Debug "Database name: $publishProfile.Project.TargetDatabaseName"
+    Write-Debug "Target connection string: $publishProfile.Project.PropertyGroup.TargetConnectionString"
+    Write-Debug "Database name: $publishProfile.Project.PropertyGroup.TargetDatabaseName"
     if($schemaToExclude) {
         Write-Debug "Schema to exclude: $schemaToExclude"
     }
