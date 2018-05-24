@@ -11,7 +11,7 @@ try {
     Write-Debug "Deploying as  $user.Name"
 
     Write-Debug "DACPAC file: $dacpacFilePath"
-    if($xmlPublishFilePath -eq $null) {
+    if(-not($xmlPublishFilePath) -or $xmlPublishFilePath -eq $env:SYSTEM_DEFAULTWORKINGDIRECTORY) {
         $xmlPublishFilePath =  [System.IO.Path]::GetFileNameWithoutExtension($dacpacFilePath) + ".publish.xml"
     }
     Write-Debug "Publish profile file: $xmlPublishFilePath"
@@ -19,7 +19,7 @@ try {
     [xml]$publishProfile = Get-Content -Path $xmlPublishFilePath
     Write-Debug "Target connection string: $publishProfile.Project.TargetConnectionString"
     Write-Debug "Database name: $publishProfile.Project.TargetDatabaseName"
-    if($schemaToExclude -ne $null) {
+    if($schemaToExclude) {
         Write-Debug "Schema to exclude: $schemaToExclude"
     }
     Write-Debug "Block on data loss : $blockOnDropDataAsString"
@@ -32,11 +32,11 @@ try {
             "/SourceFile:$dacpacFilePath",
             "/Profile:$xmlPublishFilePath")
           
-    if($schemaToExclude -ne $null) {
+    if($schemaToExclude) {
         $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
         $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
     }   
-    if($blockOnDropDataAsString -ne $null){
+    if($blockOnDropDataAsString){
         $blockOnDropData = $blockOnDropDataAsString -ne 'false'
         $args += "/p:BlockOnPossibleDataLoss=$blockOnDropData"
     }
