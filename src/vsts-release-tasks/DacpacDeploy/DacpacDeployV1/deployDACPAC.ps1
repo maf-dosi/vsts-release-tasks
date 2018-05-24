@@ -12,7 +12,7 @@ try {
 
     Write-Debug "DACPAC file: $dacpacFilePath"
     if(-not($xmlPublishFilePath) -or $xmlPublishFilePath -eq $env:SYSTEM_DEFAULTWORKINGDIRECTORY) {
-        $xmlPublishFilePath =  [System.IO.Path]::GetFileNameWithoutExtension($dacpacFilePath) + ".publish.xml"
+        $xmlPublishFilePath =  [System.IO.Path]::GetDirectoryName($dacpacFilePath) + "\" + [System.IO.Path]::GetFileNameWithoutExtension($dacpacFilePath) + ".publish.xml"
     }
     Write-Debug "Publish profile file: $xmlPublishFilePath"
     Write-Debug "Reading connection information from the publish profile"
