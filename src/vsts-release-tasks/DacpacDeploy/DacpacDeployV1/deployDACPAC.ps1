@@ -5,7 +5,6 @@ try {
     [string]$dacpacFilePath = Get-VstsInput -Name dacpacFilePath -Require
     [string]$xmlPublishFilePath = Get-VstsInput -Name xmlPublishFilePath
     [string]$schemaToExclude = Get-VstsInput -Name schemaToExclude
-    [string]$blockOnDropDataAsString = Get-VstsInput -Name blockOnDropDataAsString
 
     $user=[Security.Principal.WindowsIdentity]::GetCurrent()
     Write-Debug "Deploying as  $user.Name"
@@ -15,14 +14,9 @@ try {
         $xmlPublishFilePath =  [System.IO.Path]::GetDirectoryName($dacpacFilePath) + "\" + [System.IO.Path]::GetFileNameWithoutExtension($dacpacFilePath) + ".publish.xml"
     }
     Write-Debug "Publish profile file: $xmlPublishFilePath"
-    Write-Debug "Reading connection information from the publish profile"
-    [xml]$publishProfile = Get-Content -Path $xmlPublishFilePath
-    Write-Debug "Target connection string: $publishProfile.Project.TargetConnectionString"
-    Write-Debug "Database name: $publishProfile.Project.TargetDatabaseName"
     if($schemaToExclude) {
         Write-Debug "Schema to exclude: $schemaToExclude"
     }
-    Write-Debug "Block on data loss : $blockOnDropDataAsString"
 
     $currentDir = (Get-Item -Path ".\" -Verbose).FullName
     $sqlPackageDir = [System.IO.Path]::Combine($currentDir, "bin")
@@ -35,10 +29,6 @@ try {
     if($schemaToExclude) {
         $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
         $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
-    }   
-    if($blockOnDropDataAsString){
-        $blockOnDropData = $blockOnDropDataAsString -ne 'false'
-        $args += "/p:BlockOnPossibleDataLoss=$blockOnDropData"
     }
 
     &$sqlPackagePath $args 2>&1
