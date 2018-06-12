@@ -29,8 +29,8 @@ function DeployDacPac() {
         $sqlPackagePath = [System.IO.Path]::Combine($sqlPackageDir, "sqlpackage.exe")
 
         $args = @("/Action:Publish", 
-            "/SourceFile:'$dacpacFilePath'",
-            "/Profile:'$xmlPublishFilePath'")
+            "/SourceFile:`"$dacpacFilePath`"",
+            "/Profile:`"$xmlPublishFilePath`"")
           
         if ($schemaToExclude) {
             $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
