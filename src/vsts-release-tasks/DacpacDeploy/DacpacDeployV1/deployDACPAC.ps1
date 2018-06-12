@@ -29,8 +29,8 @@ function DeployDacPac() {
         $sqlPackagePath = [System.IO.Path]::Combine($sqlPackageDir, "sqlpackage.exe")
 
         $args = @("/Action:Publish", 
-            "/SourceFile:$dacpacFilePath",
-            "/Profile:$xmlPublishFilePath")
+            "/SourceFile:`"$dacpacFilePath`"",
+            "/Profile:`"$xmlPublishFilePath`"")
           
         if ($schemaToExclude) {
             $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
@@ -38,7 +38,7 @@ function DeployDacPac() {
         }
         Write-Debug "Calling $sqlPackagePath with $args"
         $ErrorActionPreference = 'Continue' 
-        Invoke-Expression "& '$sqlPackagePath' --% $args" 2>&1 -ErrorVariable errors | ForEach-Object {
+        Invoke-Expression "& '$sqlPackagePath' --% $args" -ErrorVariable errors | ForEach-Object {
             if ($_ -is [System.Management.Automation.ErrorRecord]) {
                 Write-Error $_
             }
