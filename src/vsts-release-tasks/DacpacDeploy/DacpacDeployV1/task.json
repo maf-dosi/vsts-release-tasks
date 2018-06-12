@@ -10,11 +10,11 @@
     "Release"
   ],
     "version": {
-        "Major": 2,
+        "Major": 1,
         "Minor": 0,
         "Patch": 0
     },
-  "preview": true,
+  "preview": false,
   "minimumAgentVersion": "1.95.1",
   "inputs": [
     {
