@@ -52,7 +52,7 @@ try {
         $deployOptions = $null
     }
 
-    if($blockOnDropDataAsString){
+    if($blockOnDropDataAsString -ne 'As configured'){
         if($deployOptions -eq $null){
             $deployOptions = New-Object Microsoft.SqlServer.Dac.DacDeployOptions
         }
