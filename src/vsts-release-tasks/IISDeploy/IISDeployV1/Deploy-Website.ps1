@@ -117,12 +117,12 @@ function Get-DestinationParameter {
         $PublishUrl = "http://$Server/MsDeployAgentService"
         $destinationParameter = "-dest:auto,computerName='$PublishUrl'"
 
-        [string]$AdminUserName = Get-VstsInput -Name AdminUserName
-        [string]$AdminPassword = Get-VstsInput -Name AdminPassword
+        [string]$adminUserName = Get-VstsInput -Name AdminUserName
+        [string]$adminPassword = Get-VstsInput -Name AdminPassword
 
         if($adminUserName -ne "" -and $adminPassword -ne "") {
             Write-Verbose "Use identity '$adminUserName' to run MSDeploy"
-            $destinationParameter ="$destinationParameter,userName=""$adminUserName"",password=""$adminPassowrd"""
+            $destinationParameter ="$destinationParameter,userName=""$adminUserName"",password=""$adminPassword"""
         }
         else {
             Write-Verbose "Use agent's identity to run MSDeploy"
