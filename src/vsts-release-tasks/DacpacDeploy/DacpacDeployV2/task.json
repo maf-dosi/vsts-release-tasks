@@ -1,0 +1,63 @@
+{
+  "id": "2B334D7A-DEDA-4F96-9E77-90D9503CCD13",
+  "name": "DeployDACPAC",
+  "friendlyName": "Deploy a DACPAC file",
+  "description": "Allows you to deploy DACPAC package with schema filtered (tested with SQL*Server 2019)",
+  "helpMarkDown": "[More Information](https://github.com/maf-dosi/vsts-release-tasks/tree/dev/src/vsts-release-tasks/DacpacDeploy)",
+  "category": "Deploy",
+  "author": "MAF-DOSI",
+  "visibility": [
+    "Release"
+  ],
+    "version": {
+        "Major": 2,
+        "Minor": 0,
+        "Patch": 0
+    },
+  "preview": false,
+  "minimumAgentVersion": "1.95.1",
+  "inputs": [
+    {
+      "name": "sqlVersion",
+      "type": "pickList",
+      "label": "Version du serveur SQL (2016, 219)",
+      "helpMarkDown": "Path of the DACPAC file to deploy",
+      "required": true,
+      "options": {
+          "2016": "SQL*Server 2016",
+          "2019": "SQL*Server 2019"
+      }
+    },
+    {
+      "name": "dacpacFilePath",
+      "type": "filePath",
+      "label": "DACPAC file path",
+      "helpMarkDown": "Path of the DACPAC file to deploy",
+      "required": true
+    },
+    {
+      "name": "xmlPublishFilePath",
+      "type": "filePath",
+      "label": "XML Publish file path",
+      "required": false,
+      "helpMarkDown": "Path of the publish profile file"
+    },
+    {
+      "name": "schemaToExclude",
+      "type": "string",
+      "label": "Schema to exclude",
+      "required": false,
+      "helpMarkDown": "The steps of the matching schema will be removed from the final script"
+    }
+  ],
+  "instanceNameFormat": "Deploy a DACPAC on $(serverName):$(databaseName)",
+  "execution": {
+    "PowerShell3": {
+      "target": "deployDACPAC.ps1",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}
