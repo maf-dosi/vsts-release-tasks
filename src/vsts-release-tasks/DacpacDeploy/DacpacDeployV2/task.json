@@ -18,17 +18,6 @@
   "minimumAgentVersion": "1.95.1",
   "inputs": [
     {
-      "name": "sqlVersion",
-      "type": "pickList",
-      "label": "Version du serveur SQL (2016, 219)",
-      "helpMarkDown": "Path of the DACPAC file to deploy",
-      "required": true,
-      "options": {
-          "SQL2016": "SQL*Server 2016",
-          "SQL2019": "SQL*Server 2019"
-      }
-    },
-    {
       "name": "dacpacFilePath",
       "type": "filePath",
       "label": "DACPAC file path",
