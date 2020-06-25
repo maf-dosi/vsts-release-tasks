@@ -24,8 +24,8 @@
       "helpMarkDown": "Path of the DACPAC file to deploy",
       "required": true,
       "options": {
-          "2016": "SQL*Server 2016",
-          "2019": "SQL*Server 2019"
+          "SQL2016": "SQL*Server 2016",
+          "SQL2019": "SQL*Server 2019"
       }
     },
     {
