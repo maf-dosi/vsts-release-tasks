@@ -4,7 +4,7 @@ Trace-VstsEnteringInvocation $MyInvocation
 
 function DeployDacPac() {
     try {
-        [string]$sqlVersion = Get-VstsInput -Name sqlVersion -Require
+        $sqlVersion = "SQL2019"
         [string]$dacpacFilePath = Get-VstsInput -Name dacpacFilePath -Require
         [string]$xmlPublishFilePath = Get-VstsInput -Name xmlPublishFilePath
         [string]$schemaToExclude = Get-VstsInput -Name schemaToExclude
@@ -26,7 +26,7 @@ function DeployDacPac() {
         }
 
         $currentDir = (Get-Item -Path ".\" -Verbose).FullName
-        $sqlPackageDir = [System.IO.Path]::Combine($currentDir, "SQL"+$sqlVersion, "bin")
+        $sqlPackageDir = [System.IO.Path]::Combine($currentDir, $sqlVersion, "bin")
         $sqlPackagePath = [System.IO.Path]::Combine($sqlPackageDir, "sqlpackage.exe")
 
         $args = @("/Action:Publish", 
