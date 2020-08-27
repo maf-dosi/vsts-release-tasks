@@ -35,7 +35,7 @@ function DeployDacPac() {
           
         if ($schemaToExclude) {
             $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
-            $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
+            $args += "/p:AdditionalDeploymentContributorArguments=""SqlPackageFilter=IgnoreSchema($schemaToExclude)"""
         }
         Write-Debug "Calling $sqlPackagePath with $args"
         $ErrorActionPreference = 'Continue' 

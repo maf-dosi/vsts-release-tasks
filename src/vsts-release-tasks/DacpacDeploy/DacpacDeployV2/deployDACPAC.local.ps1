@@ -40,7 +40,7 @@ function DeployDacPac() {
           
         if ($schemaToExclude) {
             $args += "/p:AdditionalDeploymentContributors=AgileSqlClub.DeploymentFilterContributor"
-            $args += "/p:AdditionalDeploymentContributorArguments=SqlPackageFilter=IgnoreSchema($schemaToExclude)"
+            $args += "/p:AdditionalDeploymentContributorArguments=""SqlPackageFilter=IgnoreSchema($schemaToExclude)"""
         }
         Write-Debug "Calling $sqlPackagePath with $args"
         $ErrorActionPreference = 'Continue' 
@@ -70,6 +70,6 @@ function DeployDacPac() {
 }
 
 DeployDacPac SQL2019 `
-C:\TeamProjects\MAF.DAP\dap\src\MAF.DAP.Database.Declaration\bin\Release\MAF.DAP.Database.Declaration.dacpac `
-C:\TeamProjects\MAF.DAP\dap\src\MAF.DAP.Database.Declaration\bin\Release\MAF.DAP.Database.Declaration.publish.xml `
-RefMaf
+"C:\TeamProjects\Sinapps dev\src\MAF.Sinapps.Database\bin\Release\MAF.Sinapps.Database.dacpac" `
+"C:\TeamProjects\Sinapps dev\src\MAF.Sinapps.Database\bin\Release\MAF.Sinapps.Database.publish.xml" `
+"(RefMaf|DRI|ETL)"
